@@ -1,3 +1,7 @@
+//ELEC299 Robot Code
+//By: Mitchell Waite
+//March 5, 2015
+
 #include <QSerial.h>
 QSerial myCereal;
 
