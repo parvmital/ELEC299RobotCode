@@ -3,6 +3,7 @@
 //March 5, 2015
 
 #include <QSerial.h>
+#include "FcnDefs.h"
 QSerial myCereal;
 
 void setup() {
