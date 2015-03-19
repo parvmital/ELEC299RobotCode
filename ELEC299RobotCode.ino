@@ -14,6 +14,8 @@ Servo gripServo;
 
 void setup() {
   
+  
+  
  Serial.begin(115200); //open serial for USB or bt
  myCereal.attach(3,-1); //pin 4 receieve
   panServo.attach(pan);
@@ -72,4 +74,43 @@ void grabBall()
   delay(500);
   tiltServo.write(110);
   delay(500);
+}
+
+void driveAndStop()
+{
+  int right, mid, left;
+  digitalWrite(rightDir,HIGH);
+  digitalWrite(leftDir,HIGH);
+  
+  
+  while(true)
+  {
+     if (right<rlth)
+  {
+   analogWrite(rightSpeed,80);
+   digitalWrite(rightDir,HIGH);
+   analogWrite(leftSpeed,100);
+   digitalWrite(leftDir,HIGH); 
+  }
+  else if (left<llth)
+  {
+   analogWrite(rightSpeed,100);
+   digitalWrite(rightDir,HIGH);
+   analogWrite(leftSpeed,80);
+   digitalWrite(leftDir,HIGH); 
+  }
+  else if (right<rlth && left<llth)
+  {
+   analogWrite(rightSpeed,0);
+   analogWrite(leftSpeed,0);
+   return;
+  }
+  else
+  {
+    analogWrite(leftSpeed,110);
+    analogWrite(rightSpeed,100);
+  }
+  delay(20);
+    
+  }
 }
